@@ -2,7 +2,7 @@
 import os
 
 # Load configuration
-configfile: "config.yml"
+configfile: "/prefetch-and-gatkbp/config.yml"
 
 # Rule all to specify the final outputs
 rule all:

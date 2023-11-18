@@ -1,0 +1,42 @@
+# Import modules
+import os
+
+# Load configuration
+configfile: "config.yml"
+
+# Rule all to specify the final outputs
+rule all:
+    input:
+        expand("marked_duplicates/{sample}_marked.bam", sample=config["sra_accessions"])
+
+# Rule for downloading SRA data
+rule download_sra:
+    output:
+        fastq1="data/{sample}_1.fastq",
+        fastq2="data/{sample}_2.fastq"
+    threads: 64
+    container:
+        "ncbi/sra-tools:latest"
+    shell:
+        "fasterq-dump {wildcards.sample} --threads {threads} --split-files -O data/ && "
+        "mv data/{wildcards.sample}_1.fastq {output.fastq1} && "
+        "mv data/{wildcards.sample}_2.fastq {output.fastq2}"
+
+# Rule for compressing FASTQ files with bgzip
+rule compress_fastq:
+    input:
+        fastq1="data/{sample}_1.fastq",
+        fastq2="data/{sample}_2.fastq"
+    output:
+        gz_fastq1="data/{sample}_1.fastq.gz",
+        gz_fastq2="data/{sample}_2.fastq.gz"
+    threads: 64
+    container:
+        "biocontainers/samtools"  # bgzip is part of the samtools package
+    shell:
+        """
+        bgzip --threads {threads} -c {input.fastq1} > {output.gz_fastq1}
+        bgzip --threads {threads} -c {input.fastq2} > {output.gz_fastq2}
+        rm {input.fastq1} {input.fastq2}
+        """
+

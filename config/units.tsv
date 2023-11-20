@@ -1,4 +1,4 @@
 sample	unit	platform	fq1	fq2
-SRR21031366	1	ILLUMINA	peru-mummy-runs/SRR21031366_1.fastq.gz	peru-mummy-runs/SRR21031366_2.fastq.gz
-SRR20755928	1	ILLUMINA	peru-mummy-runs/SRR20755928_1.fastq.gz	peru-mummy-runs/SRR20755928_2.fastq.gz
-SRR20458000	1	ILLUMINA	peru-mummy-runs/SRR20458000_1.fastq.gz	peru-mummy-runs/SRR20458000_2.fastq.gz
+SRR21031366	1	ILLUMINA	data/pe/SRR21031366_1.fastq.gz	data/pe/SRR21031366_2.fastq.gz
+SRR20755928	1	ILLUMINA	data/pe/SRR20755928_1.fastq.gz	data/pe/SRR20755928_2.fastq.gz
+SRR20458000	1	ILLUMINA	data/pe/SRR20458000_1.fastq.gz	data/pe/SRR20458000_2.fastq.gz

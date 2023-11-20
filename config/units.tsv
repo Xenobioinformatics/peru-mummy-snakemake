@@ -1,4 +1,4 @@
-sample	unit	platform	sra_accession
-SRR21031366	1	ILLUMINA	SRR21031366
-SRR20755928	1	ILLUMINA	SRR20755928
-SRR20458000	1	ILLUMINA	SRR20458000
+sample	unit	platform	fq1	fq2
+SRR21031366	1	ILLUMINA	fd://happy-chef/peru-mummy-runs/SRR21031366_1.fastq.gz	fd://happy-chef/peru-mummy-runs/SRR21031366_2.fastq.gz
+SRR20755928	1	ILLUMINA	fd://happy-chef/peru-mummy-runs/SRR20755928_1.fastq.gz	fd://happy-chef/peru-mummy-runs/SRR20755928_2.fastq.gz
+SRR20458000	1	ILLUMINA	fd://happy-chef/peru-mummy-runs/SRR20458000_1.fastq.gz	fd://happy-chef/peru-mummy-runs/SRR20458000_2.fastq.gz

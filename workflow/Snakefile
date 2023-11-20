@@ -14,7 +14,12 @@ module dna_seq_gatk_variant_calling:
     config:
         config
 
-use rule all from dna_seq_gatk_variant_calling
+rule all:
+    input:
+        "results/annotated/all.vcf.gz",
+        "results/qc/multiqc.html",
+        "results/plots/depths.svg",
+        "results/plots/allele-freqs.svg",
 
 rule get_fastq_pe_gz:
     output:

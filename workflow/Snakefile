@@ -14,6 +14,8 @@ module dna_seq_gatk_variant_calling:
     config:
         config
 
+use rule all from dna_seq_gatk_variant_calling
+
 rule get_fastq_pe_gz:
     output:
         # the wildcard name must be accession, pointing to an SRA number

@@ -1,38 +1,13 @@
 from snakemake.utils import min_version
 
-
 min_version("6.10.0")
-
-
 configfile: "config/config.yaml"
 
-
-# declare https://github.com/snakemake-workflows/dna-seq-gatk-variant-calling as a module
 module dna_seq_gatk_variant_calling:
     snakefile:
         github("snakemake-workflows/dna-seq-gatk-variant-calling", path="workflow/Snakefile", tag="v2.1.1")
     config:
         config
 
-rule all:
-    input:
-        "results/annotated/all.vcf.gz",
-        "results/qc/multiqc.html",
-        "results/plots/depths.svg",
-        "results/plots/allele-freqs.svg",
-
-rule get_fastq_pe_gz:
-    output:
-        # the wildcard name must be accession, pointing to an SRA number
-        "data/pe/{accession}_1.fastq.gz",
-        "data/pe/{accession}_2.fastq.gz",
-    log:
-        "logs/pe/{accession}.gz.log"
-    params:
-        extra="--skip-technical"
-    threads: 6  # defaults to 6
-    wrapper:
-        "v2.13.0/bio/sra-tools/fasterq-dump"
-
-# use all rules from https://github.com/snakemake-workflows/dna-seq-gatk-variant-calling
 use rule * from dna_seq_gatk_variant_calling
+
